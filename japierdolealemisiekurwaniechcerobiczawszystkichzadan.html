@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        #slider {
+            position: relative;
+            width: 600px; /* Możesz dostosować wymiary do swoich potrzeb */
+            height: 400px;
+            overflow: hidden;
+        }
+        .slides {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<div id="slider">
+    <img src="1.jpeg" alt="Image 1" class="slides active">
+    <img src="2.jpeg" alt="Image 2" class="slides">
+    <img src="3.jpeg" alt="Image 3" class="slides">
+    <!-- Dodaj więcej obrazów według potrzeby -->
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slides');
+    const totalSlides = slides.length;
+
+    function showNextSlide() {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % totalSlides;
+        slides[currentIndex].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 5000);
+</script>
+
+</body>
+</html>
